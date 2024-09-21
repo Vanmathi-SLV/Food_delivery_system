@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+    <title>Murari Sweets</title>
+    <link rel="stylesheet" href="navpg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./sample.js" defer></script>
+    <script src="./wish.js" defer></script>
+    <style>
+        /* Your additional CSS styles here */
+ .small-button {
+    font-size: 12px;
+    padding: 2px 6px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.quantity-input {
+    width: 30px;
+    text-align: center;
+    margin: 0 6px;
+}
+
+.add-button-container {
+    text-align: center;
+    margin-top: -20px; 
+    margin-left: 60px;
+}
+
+.add-to-cart {
+    padding: 4px 12px; /* Adjust the padding as needed */
+    color: #000000; /* Example text color */
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    background: rgb(240, 219, 32);
+    cursor: pointer;
+    float: right;
+}
+
+.add-to-cart:hover {
+    background: rgb(238, 200, 13); /* Example hover background color */
+}
+.cart-section {
+    position: fixed;
+    top: 80px; /* adjust as needed */
+    right: 20px; /* adjust as needed */
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000; /* ensure it appears above other content */
+    display: none; /* hide initially */
+    height: 300px; /* adjust as needed */
+    width:500px;
+    overflow-y: auto; /* enable vertical scrolling if needed */
+}
+
+.cart-section h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+h2{
+    font-weight: bold;
+    font-family: cursive;
+}
+.cart-item {
+    margin-bottom: 5px;
+}
+
+.cart-item button {
+    padding: 5px;
+    background-color:coral;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cart-item button:hover {
+    background-color: rgb(191, 88, 51);
+}
+#empty-cart{
+    color: black;
+    background-color: rgb(240, 219, 32) ;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#empty-cart:hover{
+    background-color:rgb(238, 200, 13); 
+}
+#check{
+    color: black;
+    background-color: rgb(26, 179, 182) ;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#check:hover{
+    background-color:rgb(8, 221, 204); 
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- desktop view -->
+    <div class="container" id="container">
+        <div id="menu">
+            <div class="title">
+                <img src=".\images\murari.png">
+            </div>
+            <div class="menu-item">
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#review">Reviews</a>
+                <a href="./wish.html">Wishlists</a>
+                <a href="./insta.html">Instamart</a>
+                <a href="./review.html">Reviews&Ratings</a>
+            </div>
+        </div>
+
+        <div id="food-container">
+            <div id="header">
+                <div><h1>Murari Sweets</h1></div>
+                <div class="util">
+                    <!--<i class="fa fa-search"> Search</i>-->
+                    <a href="./discount.html" style="text-decoration: none;"><i class="fa fa-tags"> Offers</i></a>
+                    <i class="fa fa-cart-plus" id="cart-plus"> 0 Items</i>
+                </div>
+            </div>
+            <div class="cart-section" id="cart-section" style="display: none;">
+                <h2>Cart</h2>
+                <div id="cart-items">
+
+                </div>
+                <div id="cart-total">
+                    Total: $<span id="total">0</span>
+                </div>
+                <button id="empty-cart">Empty Cart</button>
+                <a href="./pay.html" style="text-decoration: none;"><button id="check">Checkout</button></a>
+            </div>
+            <div id="food-items" class="d-food-items">
+                <div id="biryani" class="d-biryani">
+                    <p id="category-name">Pure Ghee Sweets</p>  
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ghee Mysore Pak');toggleHeart(this)"></button>                  
+                        </div> 
+                        <img src=".\images\gheemysore.jpg">
+                        <p id="item-name">Ghee Mysore Pak</p>
+                        <p id="item-price">Price : 180</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ghee Ajmer Cake');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\gheeajmer.jpg">
+                        <p id="item-name">Ghee Ajmer Cake</p>
+                        <p id="item-price">Price : 180</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                         
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ghee Cashew Halwa');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\gheehalwa.jpg">
+                        <p id="item-name">Ghee Cashew Halwa</p>
+                        <p id="item-price">Price : 160</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ghee Milk Halwa');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\gheehal.jpg">
+                        <p id="item-name">Ghee Milk Halwa</p>
+                        <p id="item-price">Price : 160</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.2</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Mini Butter Badusha');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\ghebadusha.jpg">
+                        <p id="item-name">Mini Butter Badusha</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.0</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ghee Motichoor Laddu');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\ghelado.webp">
+                        <p id="item-name">Ghee Motichoor Laddu</p>
+                        <p id="item-price">Price : 150</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ghee Rajasthani Bafri');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\ghee.jpg">
+                        <p id="item-name">Ghee Rajasthani Bafri</p>
+                        <p id="item-price">Price : 170</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chicken" class="d-chicken">
+                    <p id="category-name">Sadha Sweets</p>   
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.2</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Crispy Mysore Pak');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\mysorepak.jpg">
+                        <p id="item-name">Crispy Mysore Pak</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div> 
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.0</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Sada Halwa');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\shalwa.jpg">
+                        <p id="item-name">Sada Halwa</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div> 
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Jelabi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\jaelabi.jpg">
+                        <p id="item-name">Jelabi</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div> 
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.4</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Badhusha');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\badu.webp">
+                        <p id="item-name">Badhusha</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div> 
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Kajur');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\kajur.jpg">
+                        <p id="item-name">Kajur</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div> 
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Boondi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\boondi.jpg">
+                        <p id="item-name">Boondi</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Jangri');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\Jangri.jpg">
+                        <p id="item-name">Jangri</p>
+                        <p id="item-price">Price : 100</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="paneer" class="d-paneer">
+                    <p id="category-name">Milk Sweets</p>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Dry Jamun');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\Dry Jamun.jpg">
+                        <p id="item-name">Dry Jamun</p>
+                        <p id="item-price">Price :145</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Special Soan Papdi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\soanpapdi.jpg">
+                        <p id="item-name">Special Soan Papdi</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Butter Mysore Pak');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\Butter Mysore Pak.jpg">
+                        <p id="item-name">Butter Mysore Pak</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Wheat Halwa');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\whalwa.jpg">
+                        <p id="item-name">Wheat Halwa</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ashoka Halwa');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\ahalwa.jpg">
+                        <p id="item-name">Ashoka Halwa</p>
+                        <p id="item-price">Price : 125 </p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.2</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Paal Kova');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\pkova.jpg">
+                        <p id="item-name">Paal Kova</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Jeera Jamun');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\jamun.jpg">
+                        <p id="item-name">Jeera Jamun</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.4</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Jamoon Roll');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\jroll.jpg">
+                        <p id="item-name">Jamoon Roll</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Milk Chocolate Bafri');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\cbarfi.jpg">
+                        <p id="item-name">Milk Chocolate Bafri</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Special Peda');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\peda.jpg">
+                        <p id="item-name">Special Peda</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Milk Cake');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\milkcake.jpg">
+                        <p id="item-name">Milk Cake</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Milk Roll');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\milkroll.jpg">
+                        <p id="item-name">Milk Roll</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Kova Burfi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\kovaburfi.jpg">
+                        <p id="item-name">Kova Burfi</p>
+                        <p id="item-price">Price : 125</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vegetable" class="d-vegetable">
+                    <p id="category-name">Dry Fruit Sweets</p> 
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.4</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Kaju Katli');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\kajuk.jpg">
+                        <p id="item-name">Kaju Katli</p>
+                        <p id="item-price">Price : 250</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Kaju Watermelon');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\kajuw.jpg">
+                        <p id="item-name">Kaju Watermelon</p>
+                        <p id="item-price">Price : 250</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Kaju Cassata Roll');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\kajuc.jpg">
+                        <p id="item-name">Kaju Cassata Roll</p>
+                        <p id="item-price">Price : 250</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.0</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Badam Halwa');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\badamhalwa.jpg">
+                        <p id="item-name">Badam Halwa</p>
+                        <p id="item-price">Price : 330</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="south-indian" class="d-south-indian">
+                    <p id="category-name">Savouries</p>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.2</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Cashew Nut Pakoda');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\cpakoda.jpg">
+                        <p id="item-name">Cashew Nut Pakoda</p>
+                        <p id="item-price">Price : 66</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Butter Murukku');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\bmuruku.jpg">
+                        <p id="item-name">Butter Murukku</p>
+                        <p id="item-price">Price : 44</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Manikara Boondi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\mboondi.jpg">
+                        <p id="item-name">Manikara Boondi</p>
+                        <p id="item-price">Price : 44</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Special Mixture');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\smixture.jpg">
+                        <p id="item-name">Special Mixture</p>
+                        <p id="item-price">Price : 105</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Pepper Sev');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\pepsev.webp">
+                        <p id="item-name">Pepper Sev</p>
+                        <p id="item-price">Price : 92</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Nei Kara Boondi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\nkboo.jpg">
+                        <p id="item-name">Nei Kara Boondi</p>
+                        <p id="item-price">Price : 34</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Inji Pakoda');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\inji.jpg">
+                        <p id="item-name">Inji Pakoda</p>
+                        <p id="item-price">Price : 34</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Tradional Mixture');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\trmixture.jpg">
+                        <p id="item-name">Tradional Mixture</p>
+                        <p id="item-price">Price : 90</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Ola Pakoda');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\ola.jpg">
+                        <p id="item-name">Ola Pakoda</p>
+                        <p id="item-price">Price : 90</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Nice Sev');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\nice.jpg">
+                        <p id="item-name">Nice Sev</p>
+                        <p id="item-price">Price : 90</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Omapodi');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\omam.jpeg">
+                        <p id="item-name">Omapodi</p>
+                        <p id="item-price">Price : 90</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.3</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Kadalai Pakoda');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\kadalai.jpg">
+                        <p id="item-name">Kadalai Pakoda</p>
+                        <p id="item-price">Price : 34</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="juice" class="d-juice">
+                    <p id="category-name">Chaats</p> 
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.6</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Masala Poori');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\masalapoori.webp">
+                        <p id="item-name">Masala Poori</p>
+                        <p id="item-price">Price : 55</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Bhel Poori');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\bhel.jpg">
+                        <p id="item-name">Bhel Poori</p>
+                        <p id="item-price">Price : 55</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Pani Poor');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\pani.jpg">
+                        <p id="item-name">Pani Poori</p>
+                        <p id="item-price">Price : 45</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Dahi Poori');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\dahi.png">
+                        <p id="item-name">Dahi Poori</p>
+                        <p id="item-price">Price : 45</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">4.0</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Samosa Chaat');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\samosa.jpg">
+                        <p id="item-name">Samosa Chaat</p>
+                        <p id="item-price">Price :65</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">3.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Bread Chenna');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\bchenna.jpg">
+                        <p id="item-name">Bread Chenna</p>
+                        <p id="item-price">Price :65</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">3.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Cutlet Chenna');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\cutelet.jpg">
+                        <p id="item-name">Cutlet Chenna</p>
+                        <p id="item-price">Price :65</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                    <div id="item-card">
+                        <div id="card-top">
+                            <i class="fa fa-star" id="rating">3.5</i>
+                            <button class="fa fa-heart fa-heart-o fa-heart-red" onclick="addToWishlist('Dhal Boli');toggleHeart(this)"></button>
+                        </div> 
+                        <img src=".\images\dhal.jpg">
+                        <p id="item-name">Dhal Boli</p>
+                        <p id="item-price">Price :20</p>
+                        <div class="quantity">
+                            <button class="small-button decrement">-</button>
+                            <input type="text" class="quantity-input" value="1" readonly>
+                            <button class="small-button increment">+</button>
+                        </div>
+                        <div class="add-button-container">
+                             <button class="add-to-cart"><i class="fa fa-cart-plus"> Add</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="about" class="d-about">
+                    <h4>About</h4>
+                    <div class="para">
+                       <p>Over the years the sweet shop has gained a reputation for its
+                         quality and unchanged taste not only in Kumbakonam but also in the entire
+                          Tamilnadu and even in Abroad also. It has become a major crowd puller in Kumbakonam.
+                        You can pamper your sweet tooth with Murari sweet’s range of sweets and savories for occasions like Birthday,
+                         Farewell, Wedding, Festivals and for any occasion, where there’s an excuse for sweets..</p>
+                    </div>
+                </div>
+    
+                <div id="contact" class="d-contact">
+                    <h3>Contact</h3>
+                    <div class="contact-section">
+                        <div class="contact-info">
+                            <div><i class="fa fa-map-marker" aria-hidden="true"> 1,Big Bazaar Street, Near Ramaswamy temple, Kumbakonam.</i></div>
+                            <div><i class="fa fa-envelope" aria-hidden="true"> Murarisweets@email.com</i></div>
+                            <div><i class="fa fa-phone" aria-hidden="true"> 0435-2420789</i></div>
+                            <div><i class="fa fa-clock-o" aria-hidden="true"> Mon - Sun 8:00 AM to 10:00 PM</i></div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="review" class="d-review">
+                    <h3>Review</h3>
+                    <section id="testimonials">
+                        <div class="testimonial-box-container">
+                            <div class="testimonial-box">
+                                <div class="box-top">
+                                    <div class="profile">
+                                        <div class="profile-img">
+                                            <img src="./me.jpg" />
+                                        </div>
+                                        <div class="name-user">
+                                            <strong>Vanmathi</strong>
+                                            <span>slvvanmathi@gmail.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="client-comment">
+                                    <p> Visited first time with high expectations. They didn't disappoint us to certain extent. Good staff
+                                         with high attentiveness,
+                                         sply Mr Cholan. Nice ambience , but ground floor is good.
+    
+                                        Menu card is really vast , little confusing. They claim Mughal...but no justification.
+                                        
+                                        We tried Hummus ( good), qoboos( very dry), veg machurian gravy ( nice), tandoor roti ( nice), 
+                                        french fries, mushroom Tikka masala ( not so good because of tinned mushrooms).</p>
+                                </div>
+                            </div>
+    
+                            <div class="testimonial-box">
+                                <div class="box-top">
+                                    <div class="profile">
+                                        <div class="profile-img">
+                                            <img src="./b.jpg" />
+                                        </div>
+                                        <div class="name-user">
+                                            <strong>Bharani</strong>
+                                            <span>bvaan08@gmail.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="client-comment">
+                                    <p>Really awesome food, I personally like tandoori and fish. The atmosphere and 
+                                        service is also good.
+                                        Food: 5/5  |  Service: 5/5  |  Atmosphere: 5/5
+                                        Recommended dishes
+                                        Mutton Biryani, Tandoori Chicken, Dubai Special Barbecue Chicken,
+                                         Pepper BBQ Chicken, BBQ, Grilled Chicken,  
+                                        Parking space
+                                        Plenty of parking
+                                        Parking options
+                                        Free parking lot
+                                        Parking
+                                        Good place
+                                        Kid-friendliness
+                                        Good</p>
+                                </div>
+                            </div>
+    
+                            <div class="testimonial-box">
+                                <div class="box-top">
+                                    <div class="profile">
+                                        <div class="profile-img">
+                                            <img src="./div.jpg" />
+                                        </div>
+                                        <div class="name-user">
+                                            <strong>Divyadharshini</strong>
+                                            <span>divya25@gmail.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="client-comment">
+                                    <p> Really Good Restaurant with great ambiance. They do provide free Qawa which is a sweet gesture.
+                                         As it is located along the Highway on the outskirts of Kumbakonam, Traffic and Parking is not a Major 
+                                         Problem. Chicken and Mutton is good. They do have Mandi Platter also whereas it have to be booked a day prior as well as they do have Bucket Briyanis based upon the quantity of people.
+                                        However, they do not have Grilled Chicken during Lunch and their is 
+                                        no much of a options of Vegetarian.</p>
+                                </div>
+                            </div>
+    
+                            <div class="testimonial-box">
+                                <div class="box-top">
+                                    <div class="profile">
+                                        <div class="profile-img">
+                                            <img src="./v.jpg" />
+                                        </div>
+                                        <div class="name-user">
+                                            <strong>Vijay</strong>
+                                            <span>vjdivi11@gmail.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="client-comment">
+                                    <p>Great place to have a great food. All the foods are awesome. Rice items, briyani, Chinese are good. 
+                                        Starters and gravy are having finger licking taste. 
+                                        If you want have nice food in Kumbakonam choose this place. Worth to visit.</p>
+                                </div>
+                            </div>
+    
+                            <div class="testimonial-box">
+                                <div class="box-top">
+                                    <div class="profile">
+                                        <div class="profile-img">
+                                            <img src="./swe.png" />
+                                        </div>
+                                        <div class="name-user">
+                                            <strong>Swetha</strong>
+                                            <span>swe01@gmail.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="reviews">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="client-comment">
+                                    <p> The ambience and atmosphere of the Dubai restaurant is awesome.. 
+                                        and the food was great and had many varieties. The servers were very kind, 
+                                        very attentive. Great job by the management! 👍🏻
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div>
+            </div>
+        </div>
+
+        <div id="cart">
+            <div id="header">
+                <div class="util">
+                      <a href="./home.html"><i class="fa fa-home" aria-hidden="true"> Home</i></a>
+               </div>
+              </div>
+            <div id="category-list">
+                <p class="item-menu">Go For Hunt</p>
+                <div class="border"></div> 
+                <div class="list-card">
+                    <img src=".\images\ghee.jpg">
+                    <a href="#biryani" class="list-name">Pure Ghee sweets</a>
+                </div>  
+                
+                <div class="list-card">
+                    <img src=".\images\cbarfi.jpg">
+                    <a href="#chicken" class="list-name">Sadha sweets</a>
+                </div>  
+                
+                <div class="list-card">
+                    <img src=".\images\Dry Jamun.jpg">
+                    <a href="#paneer" class="list-name">Milk Sweets</a>
+                </div>               
+
+                <div class="list-card">
+                    <img src=".\images\kajuc.jpg">
+                    <a href="#vegetable" class="list-name">Dry Fruit Sweets</a>
+                </div>               
+
+                <div class="list-card">
+                    <img src=".\images\kadalai.jpg">
+                    <a href="#south-indian" class="list-name">Savouries</a>
+                </div>  
+                
+                <div class="list-card">
+                    <img src=".\images\dahi.png">
+                    <a href="#juice" class="list-name">Chaats</a>
+                </div>               
+            </div>
+        </div>
+    </div>
+    <script> 
+        function toggleHeart(button) {
+        button.classList.toggle('fa-heart-o');
+        }
+     </script>
+</body>
+</html>

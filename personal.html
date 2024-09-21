@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOD ZONE</title>
+    <link rel="stylesheet" href="personal.css">
+    <script src="./personal.js" defer></script>
+ </head>
+ <body>
+    <section>
+        <form id="userForm"> 
+            <h1>User Details</h1>
+            <label for="userName">Username:</label><br><br>
+            <input type="text" id="userName" required><br><br>
+    
+            <label for="visitedRestaurant">Visited Restaurant:</label><br><br>
+            <select id="visitedRestaurant" required>
+                <option value="">Select a restaurant</option>
+                <option>Hotel Bilal</option>
+                <option>Sri Balaji Bhavan</option>
+                <option>Fayaz Restaurant</option>
+                <option>The Falooda Shop</option>
+                <option>Cakes & Bakes</option>
+                <option>Murari Bombay Sweets</option>
+                <option>Grand Inn Restaurant</option>
+                <option>Sumaiyaa Inn</option>
+                <option>Dubai Restaurant</option>
+                <option>The Belgium Waffle.Co</option>
+                <option>Sri Ganesh Bhavan</option>
+                <option>Grill N Shake</option>
+            </select><br><br>
+    
+            <label for="orderHistory">Order History:</label><br><br>
+            <textarea id="orderHistory" rows="4" required></textarea><br><br>
+    
+            <button type="submit" id="save">Save</button>
+        </form>
+    </section>
+ </body>
+ </html>

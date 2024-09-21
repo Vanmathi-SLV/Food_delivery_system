@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="./pay.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <form class="pay">
+    <div class="address-container">
+      <h2>Enter Your Address</h2>
+      <input type="text" id="address" placeholder="Address" required>
+      <input type="text" id="city" placeholder="City" required>
+      <input type="text" id="postalCode" placeholder="Postal Code" required>
+    </div>
+
+    <div class="payment-container">
+      <h2>Choose Payment Method</h2>
+      <div class="payment-methods">
+        <div class="payment-option" onclick="showPaymentForm()">
+          <div class="payment-option-inner">
+            <input type="radio" id="creditCard" name="paymentMethod" value="creditCard">
+            <label for="creditCard"><i class="fa-regular fa-credit-card"></i> Credit Card</label>
+          </div>
+        </div>
+        <!-- Add more payment options as needed -->
+        <div class="payment-option" onclick="showPaymentForm()">
+          <div class="payment-option-inner">
+            <input type="radio" id="Net Banking" name="paymentMethod" value="Net Banking">
+            <label for="Net Banking"><i class="fa-solid fa-mobile-screen"></i> Net Banking</label>
+          </div>
+        </div>
+        <div class="payment-option" onclick="showPaymentForm()">
+          <div class="payment-option-inner">
+            <input type="radio" id="googlePay" name="paymentMethod" value="googlePay">
+            <label for="googlePay"><i class="fa-brands fa-google-pay"></i> Google Pay</label>
+          </div>
+        </div>
+
+        <div class="payment-option" onclick="showPaymentForm()">
+          <div class="payment-option-inner">
+            <input type="radio" id="debit card" name="paymentMethod" value="debit card">
+            <label for="debit card"><i class="fa-solid fa-credit-card"></i> Debit Card</label>
+          </div>
+        </div>
+
+        <div class="payment-option" onclick="showPaymentForm()">
+          <div class="payment-option-inner">
+            <input type="radio" id="Paytm" name="paymentMethod" value="Paytm">
+            <label for="Paytm"><i class="fa-solid fa-bag-shopping"></i>  Paytm </label>
+          </div>
+        </div>
+
+        <div class="payment-option" onclick="showPaymentForm()">
+          <div class="payment-option-inner">
+            <input type="radio" id="Phonepe" name="paymentMethod" value="Phonepe">
+            <label for="Phonepe"><i class="fa-solid fa-indian-rupee-sign"></i> Phonepe</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment form pop-up -->
+    <div class="payment-form-popup" id="paymentFormPopup">
+      <div class="payment-form">
+        <h2>Enter Payment Details</h2>
+        <form id="paymentForm">
+          <input type="text" id="cardNumber" placeholder="Card Number" maxlength="16" required>
+          <input type="date" id="expiryDate" placeholder="Expiry Date" required>
+          <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
+          <!-- Add more fields based on the selected payment method -->
+          <button type="button" onclick="submitPayment()">Submit Payment</button>
+        </form>
+      </div>
+    </div>
+    
+  </form>
+
+  <script src="./pay.js"></script>
+</body>
+</html>

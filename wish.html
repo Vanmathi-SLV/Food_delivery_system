@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="./wish.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1 style="text-align: center;"> My Wishlists</h1>
+
+    <div id="wishlist-items">
+        <!-- Wishlist items will be dynamically added here -->
+    </div>
+
+    <div class="blinking-heart" style="bottom: 10%; left: 10%;"></div>
+    <div class="blinking-heart" style="bottom: 20%; left: 30%;"></div>
+    <div class="blinking-heart" style="bottom: 30%; left: 50%;"></div>
+    <div class="blinking-heart" style="bottom: 40%; left: 70%;"></div>
+    <div class="blinking-heart" style="bottom: 50%; left: 90%;"></div>
+    <!-- Additional hearts -->
+    <div class="blinking-heart" style="bottom: 15%; left: 80%;"></div>
+    <div class="blinking-heart" style="bottom: 25%; left: 60%;"></div>
+    <div class="blinking-heart" style="bottom: 35%; left: 40%;"></div>
+    <div class="blinking-heart" style="bottom: 45%; left: 20%;"></div>
+    <div class="blinking-heart" style="bottom: 55%; left: 0%;"></div>
+
+    <script>
+        // JavaScript to populate wishlist items
+        window.onload = function() {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            let wishlistContainer = document.getElementById('wishlist-items');
+            wishlistContainer.innerHTML = '';
+
+            if (wishlist.length === 0) {
+                wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+            } else {
+                wishlist.forEach(function(item) {
+                    let itemElement = document.createElement('div');
+                    itemElement.classList.add('wishlist-item');
+                    itemElement.innerHTML = `
+                        <p>${item}</p>
+                        <button onclick="removeFromWishlist('${item}')">Remove</button>
+                    `;
+                    wishlistContainer.appendChild(itemElement);
+                });
+            }
+        };
+
+        // JavaScript function to remove item from wishlist
+        function removeFromWishlist(itemName) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            wishlist = wishlist.filter(item => item !== itemName);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            window.location.reload(); // Refresh page to reflect changes
+        }
+        for (let i = 0; i < 100; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('blinking-heart');
+            heart.style.bottom = `${Math.random() * 100}vh`; // Random vertical position
+            heart.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            heart.style.setProperty('--n', i); // Set delay for animation
+            document.body.appendChild(heart);
+        }
+    </script>
+</body>
+</html>

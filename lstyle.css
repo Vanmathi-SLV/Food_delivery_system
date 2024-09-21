@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./back.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+form{
+    margin-top: 30px;
+    margin-left: 50px;
+    width: 25rem;
+    height: 28rem;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.438);
+    box-shadow: 0 10px 40px 0 rgba(3, 5, 24, 0.37);
+    border-radius: 30px;
+    border-left:1px solid rgba(2, 2, 2, 0.212) ;
+    border-top:1px solid rgba(0, 0, 0, 0.212) ;
+}
+ 
+input{
+    width: 80%;
+    margin: 5% auto;
+    margin-bottom: 8%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: rgb(7, 7, 7);
+    border-bottom: 1px solid rgba(71, 69, 69, 0.6);   
+    opacity: .8; 
+    font-weight: bold;
+}
+#login{
+    width: 50%;
+    margin: 3% auto;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    opacity: .7;
+    background: rgb(50, 190, 224);
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 5px cyan;
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#login:hover{
+    background: rgb(91, 230, 255); 
+    font-weight: bold;
+    color: rgb(1, 3, 24);
+    box-shadow: 0 0 10px black;
+}
+#signup{
+    width: 50%;
+    margin: 3% auto;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    opacity: .7;
+    background: rgb(10, 184, 39);
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 5px greenyellow;
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#signup:hover{
+    background: rgba(37, 241, 10, 0.815); 
+    font-weight: bold;
+    color: rgb(1, 3, 24);
+    box-shadow: 0 0 10px black;
+}
+h1{
+    font-size: 50px;
+    text-align: center;
+    color: rgb(2, 2, 2);
+    text-shadow:  2px 2px 4px rgba(0,0,0,.2);
+    letter-spacing: 3px;
+    margin-top: 5%;
+    opacity: .7;
+
+}
+label{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-left: 10%;
+    opacity: .8;
+    text-shadow: 2px 2px 4px rgba(0,0,0,.2);
+    font-weight: bold;
+}
+a{
+    font-size: 18px;
+    text-align: center;
+    color: rgb(4, 90, 148);
+    opacity: .7;
+}
+a:link{
+    color: rgb(8, 102, 196);
+}
+p{
+    text-align: center;
+}
+::placeholder{
+    color: black;
+    margin: auto;
+    margin-bottom: 5px;
+}
+.text-area{
+    position: relative;
+     top:5px;
+     font-weight:bold;
+     font-size: 80px;
+     animation: glow 2s linear infinite;
+     font-family: Judson;
+     letter-spacing: 2px;
+}
+@keyframes glow{
+    0%{
+        color: yellow;
+        text-shadow: 5px 5px 50px yellow;
+    }
+    20%{
+        color: red;
+        text-shadow: 5px 5px 50px red;
+    }
+    40%{
+        color: blue;
+        text-shadow: 5px 5px 50px blue;
+    }
+    60%{
+        color: green;
+        text-shadow: 5px 5px 50px green;
+    }
+    80%{
+        color: mediumvioletred;
+        text-shadow: 5px 5px 50px mediumvioletred;
+    }
+}
